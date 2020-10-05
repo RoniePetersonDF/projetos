@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos 02</title>
+    
+</head>
+<body>
+    <div id="app">
+       <p>{{ number }}</p>
+       <button v-on:click="addOne(5, $event)">Add 1</button>
+       <p v-on:mousemove="mouseMoveP">Mouse X: {{x}} e Y: {{ y }}</p>
+    </div>
+
+    <script src="vue.js"></script>
+    
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                number: 0,
+                x: 0,
+                y: 0,
+            },
+            methods: {
+                addOne: function(passo, e) {
+                    console.log(e);
+                    this.number+=passo;
+                },
+                mouseMoveP: function(event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

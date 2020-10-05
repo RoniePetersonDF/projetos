@@ -1,0 +1,32 @@
+<script src="https://unpkg.com/vue"></script>
+<style>
+    
+</style>
+
+<div id="app">
+    
+    <ul>
+        <li v-for="people in peoples">
+            <div v-for="(valor, chave, index) in people">
+                {{ chave }} = {{ valor }}  ({{  index + 1 }})
+            </div>
+        </li>
+    </ul>
+    <hr>
+    <span v-for="n in 10">{{ n }}, </span>
+</div>
+
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            colors: ['red', 'green', 'blue', 'gray', 'white', 'black'],
+            peoples: [
+                { name: 'Ronie', age: 46, peso: 122},
+                { name: 'Rubens', age: 23, peso: 120},
+                { name: 'João', age: 13, peso: 65},
+                
+            ]
+        }
+    })
+</script>

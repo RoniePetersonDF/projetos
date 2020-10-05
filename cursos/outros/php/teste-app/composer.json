@@ -1,0 +1,17 @@
+{
+    "name": "ronie/teste-app",
+    "authors": [
+        {
+            "name": "roniepetersondf",
+            "email": "roniepetersondf@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\"         : "app/",
+            "Formularios\\" : "src/",
+            "Test\\"        : "tests/"
+        }
+    }
+}

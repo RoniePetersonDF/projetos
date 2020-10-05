@@ -1,0 +1,25 @@
+<script src="https://unpkg.com/vue"></script>
+<style>
+    
+</style>
+
+<div id="app">
+    <ul>
+        <li v-for="(color, index) in colors" :data-color="color" >{{ color }} - {{ index + 1}}</li>
+    </ul>
+</div>
+
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            colors: ['red', 'green', 'blue', 'gray', 'white', 'black'],
+            peoples: [
+                { name: 'Ronie', age: 46, peso: 122},
+                { name: 'Rubens', age: 23, peso: 120},
+                { name: 'João', age: 13, peso: 65},
+                
+            ]
+        }
+    })
+</script>
