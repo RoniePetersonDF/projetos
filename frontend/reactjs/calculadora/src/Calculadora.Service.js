@@ -27,8 +27,28 @@ function CalculadoraService() {
         return resultado
     }
 
+    function concatenarNumero(numAtual, numConcat) {
+        // caso contenha apenas '0' ou nul, reinicia o valor
+        if(numAtual === '0' || numAtual == null) {
+            numAtual = '';
+        }
+
+        // primeior dígito for '.', concatena '0' antes do ponto
+        if(numConcat === '.' || numAtual === '') {
+            return '0.';
+        }
+
+        // caso '.' digitado e ja contenha um ponto, apenas retornar
+        if(numConcat === '.' && numAtual.indexOf('.') > -'') {
+            return numAtual;
+        }
+
+        return numAtual + numConcat;
+    }
+
     return [
         calcular,
+        concatenarNumero,
         SOMA,
         SUBTRACAO,
         DIVISAO,
