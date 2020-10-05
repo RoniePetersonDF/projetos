@@ -1,0 +1,36 @@
+<%- include ('../../layouts/header') %>
+<%- include ('../../layouts/navbar') %>
+
+<div class="container">
+    <hr>
+
+    <h2>Usuários</h2>
+        <a class="btn btn-success" href="/admin/users/create">Novo usuário</a>
+    
+        <hr>
+        
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>E-mail</td>
+                    <td>Ações</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.email %></td>
+                        <td>
+                            <a href="/admin/users/edit/<%= user.id %>" class="btn btn-warning">Editar</a>
+                            <a href="/users/delete/<%= user.id %>" class="btn btn-danger" onclick="confirmarDelete(this)">Deletar</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include ('../../layouts/footer') %>

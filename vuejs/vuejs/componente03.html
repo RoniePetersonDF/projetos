@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <text-render text="Hcode treinamentos"></text-render>
+        
+        <hr>
+        <list></list>
+    </div>
+    
+    <script src="vue.js"></script>
+    <script>
+        Vue.component('text-render', {
+            props: ['text'],
+            template: `
+            <div>
+                <h4>{{ text }}</h4>
+            </div>
+            `
+        });
+
+        let listItemComponent = {
+            props: ['name'],
+            template: '<li>{{ name }}</li>'
+        }
+        let listComponent =  {
+            template: `
+                <ul>
+                    <list-item v-for="person in names" 
+                    v-bind:name="person"></list-item>
+                </ul>
+            `,
+            data() {
+                return {
+                    names : ['João', 'Rubens', 'Ronie']
+                }
+            },
+            components: {
+                listItem: listItemComponent
+            }
+        };
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                list : listComponent
+            }
+        })
+    </script>
+</body>
+</html>

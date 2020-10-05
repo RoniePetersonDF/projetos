@@ -1,0 +1,10 @@
+body {
+    background-color: teal;
+}
+
+section  {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 50px;
+    margin: 50px;
+}

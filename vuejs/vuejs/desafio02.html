@@ -1,0 +1,40 @@
+<script src="vue.js"></script>
+
+<div id="desafio">
+    <!-- 1) Exiba um alert quando o botão for clicado -->
+    <div>
+        <button v-on:click="showAlert">Exibir Alerta</button>
+    </div>
+    
+    <!-- 2) Escute o evento "keydown" e armazene o valor na propriedade
+        data (dica: event.target.value) -->
+    <div>
+        <input type="text" v-on:keyup="saveDate">
+        <p>{{ valor }}</p>
+    </div>
+    
+    <!-- 3) Ajuste o exemplo 2 para disparar o evento "keydown" somente
+        quando a tecla for ENTER -->
+    <div>
+        <input type="text" v-on:keyup.enter="saveDate">
+        <p>{{ valor }}</p>
+    </div>
+</div>
+<script>
+    const app = new Vue({
+        el: '#desafio',
+        data: {
+            valor: 0
+        },
+        methods: {
+            showAlert: function() {
+                alert('hi')
+            },
+            saveDate: function(event) {
+                this.valor = event.target.value
+            },
+        },
+    })
+
+
+</script>

@@ -1,0 +1,26 @@
+###
+GET http://localhost:3001/subscribes
+
+###
+GET http://localhost:3001/subscribes/5f14ba5a5179362b4cb0eead
+
+###
+POST http://localhost:3001/subscribes
+Content-Type: application/json
+
+{
+    "userName": "Maria",
+    "userChannel": "teste 04"
+}
+
+###
+DELETE  http://localhost:3001/subscribes/5f14bea663ce593128427baa
+
+###
+PATCH  http://localhost:3001/subscribes/5f14ba485179362b4cb0eeac
+Content-Type: application/json
+
+{
+    "userName": "Ronie Peterson",
+    "userChannel": "teste 1"
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="number" v-model:value="fontSizeProp">
+        <h2 :style="{ fontSize: fontSizeProp + 'px' }">Ronie Peterson</h2>
+        <hr>
+        <p :style="styleRGB">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ab sit maiores sequi, eveniet totam soluta quis! Harum suscipit, saepe accusamus ex non dolore illum atque omnis sunt alias dolor.
+        </p>
+        <input type="number" v-model:value="styleRed">
+        <input type="number" v-model:value="styleGreen">
+        <input type="number" v-model:value="styleBlue">
+        
+        <hr>
+
+        <p :style="{ color: color2 }">teste color2</p>
+        <input type="color" v-model:value="color2">
+    </div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                fontSizeProp: 40,
+                styleRed: 50,
+                styleGreen: 150,
+                styleBlue: 20,
+                color2: 'red'
+            },
+            computed: {
+                styleRGB() {
+                    return {
+                        color: `rgb(${this.styleRed}, ${this.styleGreen},${this.styleBlue})`
+                    }
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>
