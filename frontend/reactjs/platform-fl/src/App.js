@@ -1,10 +1,12 @@
 import React from 'react';
-import './App.css';
+import Title from './components/Title';
 
 function App() {
   return (
     <div>
-      <h1>Página principal</h1>
+      <Title>Coiso</Title>
+      <Title>Coiso 2</Title>
+      <Title>Coiso 3</Title>
     </div>
   );
 }
