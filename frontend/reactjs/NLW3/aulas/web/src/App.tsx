@@ -1,14 +1,12 @@
 import React from 'react';
 
-function Title() {
-  return (
-    <h1>Hello NLW</h1>
-  )
-}
+import './styles/global.css';
+
+import Routes from './routes';
 
 function App() {
   return (
-    <Title />
+    <Routes />
   );
 }
 
