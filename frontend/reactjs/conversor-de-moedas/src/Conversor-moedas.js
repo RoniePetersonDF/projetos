@@ -52,13 +52,13 @@ function ConversorMoedas() {
         .then(res => {
           const cotacao = obterCotacao(res.data);
           if(cotacao) {
-            setResultadoConversao(`${valor}  ${moedaDe} = ${cotacao} ${moedaPara}`);
+            setResultadoConversao(`${valor} ${moedaDe} = ${cotacao} ${moedaPara}`);
             setExibirModal(true);
             setExibirSpinner(false);
             setExibirMsgErro(false);
           } else {
             exibirErro();
-          }
+          } 
         })
         .catch(err => exibirErro());
 
@@ -124,7 +124,7 @@ function ConversorMoedas() {
             </Col>
 
             <Col sm="2">
-              <Button variant="success" type="submit">
+              <Button variant="success" type="submit" data-testid="btn-converter">
                 <span className={exibirSpinner ? null : 'hidden'}>
                   <Spinner animation="border" size="sm"/>
                 </span>
@@ -136,7 +136,7 @@ function ConversorMoedas() {
           </Form.Row>
         </Form>
 
-        <Modal show={exibirModal} onHide={handleFecharModal}>
+        <Modal show={exibirModal} onHide={handleFecharModal} data-testid="modal">
           <Modal.Header closeButton>
             <Modal.Title>Conversão</Modal.Title>
           </Modal.Header>

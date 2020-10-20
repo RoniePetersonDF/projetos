@@ -7,7 +7,7 @@ describe('Teste do componente de listagem de moedas', () => {
     it('deve renderizar o componente sem erros', () => {
       const div = document.createElement('div');
       ReactDOM.render(<ListarMoedas />, div);
-      ReactDOM.unmountcomponentAtNode(div);
+      ReactDOM.unMountComponentAtNode(div);
     });
 
 });
