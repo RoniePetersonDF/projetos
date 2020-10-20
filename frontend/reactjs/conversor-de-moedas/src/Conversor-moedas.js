@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Conversor-moedas.css';
 
 import { Jumbotron, Button, Form, Col, Spinner, Alert, Modal } from 'react-bootstrap'
@@ -6,7 +6,38 @@ import { Jumbotron, Button, Form, Col, Spinner, Alert, Modal } from 'react-boots
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 
+import ListarMoedas from './listar-moedas'
+
+
 function ConversorMoedas() {
+  const [valor, setValor] = useState('1');
+  const [moedaDe, setMoedaDe] = useState('BRL');
+  const [moedaPara, setMoedaPara] = useState('USD');
+  const [exibirSpinner, setExibirSpinner] = useState(false);
+  const [formValidado, setFormValidado] = useState(false);
+
+  function handleValor(event) {
+      setValor(event.target.value.replace(/\D/g, ''));
+  }
+
+  function handleMoedaDe(event) {
+    setMoedaDe(event.target.value);
+  }
+
+  function handleMoedaPara(event) {
+    setMoedaPara(event.target.value);
+  }
+
+  function converter(event) {
+    event.preventDefault();
+    setFormValidado(true);
+    if(event.currentTarget.checkValidity() === true) {
+      alert('correto');
+    } else {
+      alert('incorreto');
+    }
+  }
+
   return (
     <div>
       <h1>Conversor de moedas</h1>
@@ -14,16 +45,25 @@ function ConversorMoedas() {
       <Alert variant="danger" show={false}>
         Erro obtendo dados de conversão, tente novamente.
       </Alert>
-      
+
       <Jumbotron>
-        <Form>
+        <Form onSubmit={converter} noValidate validated={formValidado}>
           <Form.Row>
             <Col sm="3">
-              <Form.Control placeholder="0" value={1} required />
+              <Form.Control
+                placeholder="0"
+                value={valor}
+                onChange={handleValor}
+                required
+              />
             </Col>
 
             <Col sm="3">
-              <Form.Control as="select">
+              <Form.Control as="select"
+                value={moedaDe}
+                onChange={handleMoedaDe}
+              >
+                <ListarMoedas />
               </Form.Control>
             </Col>
 
@@ -32,14 +72,22 @@ function ConversorMoedas() {
             </Col>
 
             <Col sm="3">
-              <Form.Control as="select">
+              <Form.Control as="select"
+                value={moedaPara}
+                onChange={handleMoedaPara}
+              >
+                <ListarMoedas />
               </Form.Control>
             </Col>
 
             <Col sm="2">
               <Button variant="success" type="submit">
-              <Spinner animation="border" size="sm"/>
-                Converter
+                <span className={exibirSpinner ? null : 'hidden'}>
+                  <Spinner animation="border" size="sm"/>
+                </span>
+                <span className={exibirSpinner ? 'hidden' : null}>
+                  Converter
+                </span>
               </Button>
             </Col>
           </Form.Row>
