@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import './Conversor-moedas.css';
 
-import { Jumbotron, Button, Form, Col, Spinner, Alert, Modal } from 'react-bootstrap'
+import { Jumbotron, Button, Form, Col, Spinner, Alert, Modal } from 'react-bootstrap';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 import ListarMoedas from './listar-moedas'
 
 
 function ConversorMoedas() {
+
+  const FIXER_URL = `http://data.fixer.io/api/latest?access_key=5990ba90a52ae269ebc3d166b6321e57`;
+
   const [valor, setValor] = useState('1');
   const [moedaDe, setMoedaDe] = useState('BRL');
   const [moedaPara, setMoedaPara] = useState('USD');
@@ -42,8 +46,28 @@ function ConversorMoedas() {
     event.preventDefault();
     setFormValidado(true);
     if(event.currentTarget.checkValidity() === true) {
-      setExibirModal(true);
-    } 
+      setExibirSpinner(true);
+      axios.get(FIXER_URL)
+        .then(res => {
+          const cotacao = obterCotacao(res.data);
+          setResultadoConversao(`${valor}  ${moedaDe} = ${cotacao} ${moedaPara}`);
+          setExibirModal(true);
+          setExibirSpinner(false);
+        })
+
+    }
+  }
+
+  function obterCotacao(dadosCotacao) {
+    if(!dadosCotacao || dadosCotacao.success !== true) {
+      return false
+    }
+
+    const cotacaoDe = dadosCotacao.rates[moedaDe];
+    const cotacaoPara = dadosCotacao.rates[moedaPara];
+    const cotacao = (1 / cotacaoDe * cotacaoPara) * valor;
+
+    return cotacao.toFixed(2);
   }
 
   return (
