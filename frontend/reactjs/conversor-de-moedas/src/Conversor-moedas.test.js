@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { Render } from '@testing-library/react';
 import ConversorMoedas from './Conversor-moedas';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
