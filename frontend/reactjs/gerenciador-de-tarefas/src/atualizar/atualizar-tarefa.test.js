@@ -1,7 +1,12 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import AtualizarTarefa from './atualizar-tarefa';
 
-function AtualizarTarefa() {
-    return <h1>Atualizar Tarefa</h1>
-}
+describe('Teste do componente atualizar tarefa', () =>{
 
-export default AtualizarTarefa;
+    it('deve renderizar o componente sem erro', () => {
+        const div = document.createElement('div');
+        ReactDOM.render(<AtualizarTarefa id={1} />, div);
+        ReactDOM.unmountComponentAtNode(div);
+    });
+});

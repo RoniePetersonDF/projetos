@@ -3,8 +3,8 @@ import './gerenciador-tarefas.css';
 import { useRoutes } from 'hookrouter';
 
 import ListarTarefas from './listar/listar-tarefas';
-import CadastrarTarefa from './listar/cadastrar-tarefa';
-import AtualizarTarefa from './listar/atualizar-tarefa';
+import CadastrarTarefa from './cadastrar/cadastrar-tarefa';
+import AtualizarTarefa from './atualizar/atualizar-tarefa';
 
 const routes = {
   '/': () => <ListarTarefas />,
