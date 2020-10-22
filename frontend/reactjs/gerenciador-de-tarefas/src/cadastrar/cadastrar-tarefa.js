@@ -46,6 +46,7 @@ function CadastrarTarefa() {
                             required
                             value={tarefa}
                             onChange={handleTxtTarefa}
+                            data-testid="txt-tarefa"
                         />
                         <Form.Control.Feedback type="invalid">
                             A tarefa deve conter ao menos 5 caracteres.
@@ -55,7 +56,8 @@ function CadastrarTarefa() {
                     <Form.Group className="text-center">
                         <Button
                             variant="success"
-                            type="submit">
+                            type="submit"
+                            data-testid="btn-cadastrar">
                             Cadastrar
                         </Button>
                         &nbsp;&nbsp;
@@ -63,7 +65,7 @@ function CadastrarTarefa() {
                     </Form.Group>
                 </Form>
 
-                <Modal show={exibirModal} onHide={handleFecharModal}>
+                <Modal show={exibirModal} onHide={handleFecharModal} data-testid="modal">
                     <Modal.Header closeButton>
                         <Modal.Title>Sucesso</Modal.Title>
                     </Modal.Header>
