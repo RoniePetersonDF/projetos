@@ -33,6 +33,20 @@ function CadastrarTarefa() {
                         <A href="/" className="btn btn-light">Voltar</A>
                     </Form.Group>
                 </Form>
+
+                <Modal show={false}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Sucesso</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        Tarefa adicionada com sucesso!
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button variant="success">Continuar</Button>
+                    </Modal.Footer>
+                </Modal>
             </Jumbotron>
         </div>
     );
