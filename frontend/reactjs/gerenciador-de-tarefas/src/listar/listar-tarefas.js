@@ -1,5 +1,5 @@
 import React from 'react';
-import { A } from 'hookrouter';
+import { navigate, A } from 'hookrouter';
 
 
 function ListarTarefas() {
