@@ -5,7 +5,7 @@ import { useRoutes } from 'hookrouter';
 const routes = {
   '/': () => <ListarTarefas />,
   '/cadastrar': () => <CadastrarTarefa />,
-  '/atualizar/:id': ({id}) => <AtualizarTarefa id={id} />
+  // '/atualizar/:id': ({id}) => <AtualizarTarefa id={id} />
 };
 
 function GerenciadorTarefas() {
