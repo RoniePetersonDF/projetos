@@ -2,13 +2,24 @@ import React, { useState } from 'react';
 import { Button, Form, Jumbotron, Modal} from 'react-bootstrap';
 import { navigate, A } from 'hookrouter';
 
+import Tarefa from '../models/tarefal.model';
+
 function CadastrarTarefa() {
     const [tarefa, setTarefa] = useState('');
     const [formValidado, setFormValidado] = useState(false);
     const [exibirModal, setExibirModal] = useState(false);
 
     function cadastrar(e) {
+        e.preventDefault();
+        setFormValidado(true);
+        if(e.currentTarget.checkValidity() === true) {
+            const tarefasDb = localStorage['tarefas'];
+            const tarefas = tarefasDb ? JSON.parse(tarefasDb) : [];
 
+            tarefas.push(new Tarefa(new Date().getTime(), tarefa, false));
+            localStorage['tarefas'] = JSON.stringify(tarefas);
+            setExibirModal(true);
+        }
     }
 
     function handleTxtTarefa(e) {
